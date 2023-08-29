@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+@inject UserManager<IdentityUser> userManager
+@using Microsoft.AspNetCore.Identity
+
+@if (User.Identity.IsAuthenticated)
+	{
+
+		try
+		{
+			var user = await userManager.GetUserAsync(User);
+			<h1 style="color: gray;">Welcome @user.Email</h1>
+		}
+		catch
+		{
+
+		}
+	}
+</div>
